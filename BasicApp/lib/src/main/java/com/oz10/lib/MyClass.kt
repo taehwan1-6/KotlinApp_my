@@ -52,7 +52,32 @@ public class MainClass {
 
 fun main(args: Array<String>) {
 
-    example09()
+    example11()
+}
+
+// 늦은 초기화 lateinit
+// lateinit 변수가 초기화되었는지 확인하려면 해당 변수의 isInitialized 속성을 검사
+private fun example11() {
+    lateinit var myName: String
+
+//    if (::myName.isInitialized) {
+//        // 코드
+//    }
+
+}
+
+// 엘비스 연산자 (?:) : null 값을 검사하는 if-else 문
+private fun example10() {
+    val myname: String? = "Hello"
+
+    if (myname != null) {
+        println(myname)
+    } else {
+        println("String is null")
+    }
+
+    // 위의 if else 문과 비교해서 굉장히 짧아졌다.
+    println( myname ?: "String is null")
 }
 
 // null 가능 타입과 let 함수
