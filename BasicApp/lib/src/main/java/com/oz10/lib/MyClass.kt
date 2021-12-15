@@ -65,6 +65,7 @@ private fun example09() {
 //        val result = firstNumber.times(secondNumber)
 //    }
 
+    // let 함수 여기서는 secondNumber의 객체(?)가 == it 으로 쓰이는거 같다.
     secondNumber?.let {
         val result = firstNumber.times(it)
         println(result)
