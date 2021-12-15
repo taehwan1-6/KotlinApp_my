@@ -44,14 +44,60 @@ public class MainClass {
 //    }
 //    abc()
 
+// ㅁ 변수, 상수, 타입, 사칙연산
+// 변수선언하기 : 변수 정의 형식
+//    var a : Int = 5
+//    변수정의키워드(val,var) | 변수이름 | 타입정의 | 대입연산자 | 대입값
+
+
 fun main(args: Array<String>) {
 
+    example04()
+}
+
+// 바이트 변환
+private fun example04() {
+    val f : Short = 200
+    val b = f.toByte()
+    println(b)
+}
+
+// 사칙연산
+private fun example03() {
+    println(5 + 5)
+    println(10 - 2)
+    println(3 * 2)
+    println(7 / 2)
+    println(7 % 2)
+    println(7 / 2.0)
+}
+
+// 타입
+private fun example02() {
+    // 논리형
+    val b1 = true
+    val b2 = false
+    println(b1)
+
+    // 문자형
+    val c = 'A'
+
+    // 정수형
+    val num1: Byte = 127 // 1byte
+    val num2: Short = 20 // 2byte
+    val num3: Int = 30   // 4byte
+    val num4: Long = 40  // 8byte
+
+    // 실수형
+    val num5 = 10.3.toFloat() // 4byte
+    val num6 = 10.3          // 8byte
+}
+
+private fun example01() {
     println("Welcome to Kotlin")
     for (i in 1..8) {
         println("i = $i")
     }
-
-    example00()
 }
 
 private fun example00() {
