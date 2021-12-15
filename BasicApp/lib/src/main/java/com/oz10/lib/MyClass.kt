@@ -1,7 +1,12 @@
 package com.oz10.lib
 
-class MyClass {
+//class MainClass
+public class MainClass {
+    public fun printTest() {
+        println("test")
+    }
 }
+
 
 // JVM : 코틀린 소스코드 -> 바이트코드 변환 -> JVM 이 바이트코드 실행 -> 콘솔 출력
 // 데이터타입 : 자바는 (기본데이터타입 8개 + 참조데이터타입), 코틀린은 모두 참조데이터타입
