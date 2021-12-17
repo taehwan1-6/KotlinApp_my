@@ -18,7 +18,7 @@ fun main(args: Array<String>) {
 //    example05()
 
     println("Lambda..")
-    example06()
+    example09()
 }
 
 // 함수란?: 특정 작업을 수행하기 위해 호출될 수 있는 이름이 있는 코드 블록
@@ -105,3 +105,55 @@ private fun example06() {
     println(result)
 }
 
+// 람다식 처럼 일반 함수의 참조를 변수에 저장하고자 할 때
+// 함수 이름 앞에 두 개의 콜론(::)을 붙이고 함수 괄호를 빼면 된다
+private fun example07() {
+    val buildMsg = ::buildMessageFor
+    val msg = buildMsg("Park", 5)
+    println(msg)
+}
+
+// 람다식의 끝에 인자를 포함하는 괄호를 추가하면 람다식이 선언과 동시에 바로 실행된다.
+// 람다식에는 표현식 끝에 세미콜론(;)을 붙여 하나 이상의 표현식을 포함
+// 람다식에서 중괄호 내부의 제일 마지막 표현식의 결과가 람다식의 결과로 반환된다.
+private fun example08() {
+    val result = {x: Int, y: Int -> x * y}(10, 20)
+    println(result)
+    println()
+
+    val nextMsg = { println("hello"); println("Goodbye"); "이건 생략될듯";"리턴"}()
+    println(nextMsg)
+}
+
+// 고차 함수 higher-order function
+//   람다식이나 함수의 참조를 다른 함수의 인자로 전달하거나 결과로 반환
+// 함수 타입 function type 개념
+//   매개변수와 반환 결과의 타입으로 정의
+// 고차 함수의 매개변수 타입과 인자로 전달되는 함수의 결과 타입이 동일
+private fun example09() {
+    fun inchesToFeet(inches: Double): Double {
+        return inches * 0.0833333
+    }
+    fun inchesToYard(inches: Double): Double {
+        return inches * 0.0277778
+    }
+    fun outputConversion(converterFunc: (Double) -> Double, value: Double) {
+        val result = converterFunc(value)
+        println("Result of conversion is $result")
+    }
+
+    outputConversion(::inchesToFeet, 22.45)
+    outputConversion(::inchesToYard, 22.45)
+
+
+    fun decideFunc(feet: Boolean): (Double) -> Double {
+        if (feet) {
+            return ::inchesToFeet
+        } else {
+            return ::inchesToYard
+        }
+    }
+
+    val converter = decideFunc(true)
+    println( converter(22.45) )
+}
