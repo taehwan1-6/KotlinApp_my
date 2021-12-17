@@ -2,11 +2,6 @@ package com.oz10.lib
 
 // 코틀린 흐름 제어 flow control - 하나 이상의 조건에 기반하여 실행할 코드와 횟수를 결정
 
-fun main(args: Array<String>) {
-    println("Flow Control")
-
-    example04()
-}
 
 // 루프 흐름 제어: 루프는 지정된 조건이 충족되는 동안 반복 실행되는 코드
 
@@ -88,4 +83,64 @@ private fun example04() {
     }
     println()
 
+}
+
+
+// 조건 흐름 제어: 하나 이상의 조건에 따라 코드를 다르게 실행
+
+// if 표현식: 실행 되는 한 줄일 때는 열고 닫는 중괄호({})를 생략 가능
+// if (조건식) { // 조건식의 결과가 true일 때 실행될 코드 }
+// 코틀린에서 if는 기존 프로그래밍 언어와 다르게 true나 false를 값으로 반환하므로 다른 표현식 안에 사용할 수 있다.
+//   명령문이면서 표현식이다.
+//   변수 = if (조건식) 반환값1 else 반환값2
+private fun example05() {
+    val x = 10
+    if (x > 9) println("x is greater than 9")
+
+    val y = if (x > 9) x else 9
+    println(y)
+}
+
+// if … else … 표현식
+//   if (조건식) { // if 표현식의 결과가 true일 때 실행될 코드 }
+//   else { // if 표현식의 결과가 false일 때 실행될 코드 }
+// if … else if … 표현식: 여러 가지 조건에 따라 코드 실행을 결정할 경우
+private fun example06() {
+    val x = 10
+    if (x > 9) println("x is greater than 9")
+    else println("x is less than 9")
+
+    if (x == 10) println("x is 10")
+    else if (x == 9) println("x is 9")
+    else if (x == 8) println("x is 8")
+    else println("x is less than 8")
+}
+
+// when 표현식: 검사할 조건이 많을 때 사용하면 편리
+// 자바의 switch-case 와 유사
+// when (value) {
+//    match1 -> // 값이 일치될 때 실행될 코드
+//    match2 -> // 값이 일치될 때 실행될 코드
+//    …
+//    else -> // 모든 값이 일치되지 않을 때 실행될 코드
+// }
+private fun example07() {
+    val x = 9
+    when (x) {
+        10 -> println("x is 10")
+        9 -> println("x is 9")
+        8 -> println("x is 8")
+        else -> println("x is less than 8")
+    }
+}
+
+
+fun main(args: Array<String>) {
+    println("Flow Control")
+
+    example05()
+    println()
+    example06()
+    println()
+    example07()
 }
