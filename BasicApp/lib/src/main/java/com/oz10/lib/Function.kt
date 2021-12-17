@@ -8,15 +8,17 @@ fun main(args: Array<String>) {
     println("Function & Lambda")
     println()
 
-    println("Function..")
-    example01()
-    println()
+//    println("Function..")
+//    example01()
+//    println()
 
 //    example02()
 //    example03()
 //    example04()
+//    example05()
 
-    example05()
+    println("Lambda..")
+    example06()
 }
 
 // 함수란?: 특정 작업을 수행하기 위해 호출될 수 있는 이름이 있는 코드 블록
@@ -90,3 +92,16 @@ private fun example05() {
 
     displayString()
 }
+
+
+// 람다식: 독립적인 코드 블록
+//   {<매개변수명>: <매개변수 타입>, … -> <값을 반환하는 표현식> }
+private fun example06() {
+    val sayHello = { println("Hello") }
+    sayHello()
+
+    val multiply = {x: Int, y: Int -> x * y}
+    val result = multiply(10, 20)
+    println(result)
+}
+
