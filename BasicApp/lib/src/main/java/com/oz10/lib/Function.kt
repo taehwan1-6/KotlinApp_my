@@ -12,9 +12,11 @@ fun main(args: Array<String>) {
     example01()
     println()
 
-    example02()
-    example03()
-    example04()
+//    example02()
+//    example03()
+//    example04()
+
+    example05()
 }
 
 // 함수란?: 특정 작업을 수행하기 위해 호출될 수 있는 이름이 있는 코드 블록
@@ -65,4 +67,26 @@ fun displayString(vararg strs: String) {
 
 private fun example04() {
     displayString("one", "two", "three", "four")
+}
+
+
+// 단일 표현식 함수: 함수 실행 코드에 하나의 표현식만 있을 때
+// fun <함수명> (<매개변수명>: <매개변수 타입>, …): <반환 타입> = // 함수 코드
+fun multiply(x: Int, y: Int): Int {
+    return x * y
+}
+fun multiply1(x: Int, y: Int): Int  = x * y
+fun multiply2(x: Int, y: Int) = x * y      // 타입추론이 가능한 경우 반환타입 생략가능
+
+// 지역 함수 local function: 다른 함수에 포함된 함수, 함수 호출 이전에 정의
+//   자신을 포함하는 함수 외부의 다른 코드에서는 사용 불가
+private fun example05() {
+    val name = "Park"
+    val count = 5
+
+    fun displayString() {
+        for (index in 0..count) println("$index $name")
+    }
+
+    displayString()
 }
