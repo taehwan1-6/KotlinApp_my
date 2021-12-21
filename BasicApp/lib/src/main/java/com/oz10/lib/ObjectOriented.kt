@@ -33,10 +33,13 @@ package com.oz10.lib
 //   기본생성자 다음에 자동 실행
 //   (단, 기본 생성자가 없고 보조 생성자만 있을 때는 실행되지 않는다)
 
-// 클래스 함수 호출과 속성 사용
-//   클래스인스턴스.속성명
-//   클래스인스턴스.함수명()
-//   클래스 인스턴스 참조(변수 등)에 점(.)을 붙이고 그 다음에 함수나 속성을 지정
+// 클래스 커스텀 접근자
+//   속성 기본 접근자 accessor : 속성값을 가져오거나 설정하는 기본 제공 접근자
+//   속성 커스텀 접근자 : 속성이 반환되거나 설정되기 전에 원하는 로직을 실행
+//     각 속성에 게터 getter 나 세터 setter 를 작성하여 구현
+//     연산속성 computed property : 클래스의 다른 속성값을 사용하여 자신의 값을 산출하는 속성
+//     세터를 선언하면 속성값을 변경한다는 것이므로 해당 속성을 val 이 아닌 var 로 선언한다
+
 
 
 class BankAccount {
@@ -100,12 +103,45 @@ class BankAccount3 (val accountNumber: Int, var accountBalance: Double) {
     }
 }
 
+// 클래스 커스텀 접근자
+class BankAccount4 (val accountNumber: Int, var accountBalance: Double) {
+    init {
+        // 초기화하는 코드
+        accountBalance = 0.0
+    }
+
+    var name: String = ""       // 고객이름
+    val fees: Double = 25.00    // 은행 수수료 공제금액
+
+    var balanceLessFees: Double
+        get() { return accountBalance - fees}
+        set(value) { accountBalance = value - fees}
+
+    // 파라미터로 안들어와도 되는 부분, 하지만 저 위에는 파라미터로 꼭 들어와야하는 부분 맞나?
+    constructor(number: Int, balance: Double, name: String) : this(number, balance) {
+        this.name = name
+    }
+
+    // 계좌 잔액을 출력하는 함수
+    fun displayBlance() {
+        println("Number $accountNumber")
+        println("Name is $name")
+        println("Currnet blance is $accountBalance")
+    }
+}
+
 
 // 클래스 인스턴스 생성하고 초기화
 //   클래스로 뭔가를 하려면 인스턴스를 생성, 생성되는 인스턴스의 참조를 저장할 변수를 선언
 //   val account1: BankAccount = BankAccount()
 //   val account1 = BankAccount()  // 변수의 타입을 코틀린 컴파일러가 추론, 생략 가능
 //   클래스의 인스턴스가 생성되어 변수를 사용(참조)할 수 있다
+
+// 클래스 함수 호출과 속성 사용
+//   클래스인스턴스.속성명
+//   클래스인스턴스.함수명()
+//   클래스 인스턴스 참조(변수 등)에 점(.)을 붙이고 그 다음에 함수나 속성을 지정
+
 fun main(args: Array<String>) {
 
     val account1: BankAccount = BankAccount(12345, 100.0)
@@ -129,6 +165,14 @@ fun main(args: Array<String>) {
     account1.accountBalance = 1000.0
     val balance1 = account1.accountBalance
     account1.displayBlance()
+
+    println("=========================")
+
+    val account6 = BankAccount4(12349, 300.0)
+    account6.displayBlance()
+
+    account6.balanceLessFees = 200.0
+    account6.displayBlance()
 
 
 }
