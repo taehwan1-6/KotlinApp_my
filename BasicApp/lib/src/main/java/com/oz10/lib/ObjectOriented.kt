@@ -33,6 +33,10 @@ package com.oz10.lib
 //   기본생성자 다음에 자동 실행
 //   (단, 기본 생성자가 없고 보조 생성자만 있을 때는 실행되지 않는다)
 
+// 클래스 함수 호출과 속성 사용
+//   클래스인스턴스.속성명
+//   클래스인스턴스.함수명()
+//   클래스 인스턴스 참조(변수 등)에 점(.)을 붙이고 그 다음에 함수나 속성을 지정
 
 
 class BankAccount {
@@ -119,5 +123,12 @@ fun main(args: Array<String>) {
 
     val account5 = BankAccount3(12349, 1.0, "kang")
     account5.displayBlance()
+
+    println("=========================")
+
+    account1.accountBalance = 1000.0
+    val balance1 = account1.accountBalance
+    account1.displayBlance()
+
 
 }
