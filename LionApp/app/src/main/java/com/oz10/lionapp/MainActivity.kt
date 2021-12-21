@@ -23,5 +23,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        btnHome.setOnClickListener {
+            val intent: Intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.kakaocorp.com"))
+            startActivity(intent)
+        }
+
+
     }
 }
