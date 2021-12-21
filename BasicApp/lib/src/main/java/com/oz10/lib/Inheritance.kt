@@ -59,6 +59,10 @@ open class BankAccountP {
 // 서브 클래스 기능 확장
 class SavingsAccount : BankAccountP {
     constructor(number: Int, balance: Double) : super(number, balance)
+    constructor(number: Int, balance: Double, rate: Double) : super(number, balance) {
+        this.rate = rate
+    }
+
 
     // 이자율과 이자금액 산출 함수
     var rate: Double = 0.02
@@ -75,6 +79,9 @@ fun main(args: Array<String>) {
 //    println( sc.x )
 
     val sa = SavingsAccount(12345, 1000.0)
+    println( sa.calculateInterest() )
+
+    val sa2 = SavingsAccount(12346, 1000.0, 0.07)
     println( sa.calculateInterest() )
 
 }
