@@ -12,15 +12,39 @@ package com.oz10.lib
 //   데이터 캡슐화 encapsulation : 클래스에 캡슐화된 데이터를 속성 또는 인스턴스 변수라고 한다
 // 클래스에 함수 정의
 //   코틀린의 표준 함수 선언 문법을 사용해서 클래스의 열고 닫는 중괄호({}) 내부에 선언
+
+// 클래스의 기본과 보조 생성자
+//   생성자 constructor : 클래스 인스턴스를 생성할 때 초기화 작업을 해야 하는 경우
+// 보조생성자 secondary constructor :
+//   class BankAccount { constrouctor(…) : this(…) { //초기화 코드 }
+//    서로 다른 구성 값으로 인스턴스를 초기화, 클래스 내부에 선언,
+//    여러 개의 클래스 보조 생성자를 가질 수 있다
+//            보조생성자에 선언된 변수는 클래스 내부 속성으로 추가해야 한다
+//            보조생성자에서 기본생성자 속성을 초기화하기 위해 this 키워드를 사용해 기본생성자를 호출한다
+
 class BankAccount {
 
-    var acountBlance: Double = 0.0  // 잔액
+    var accountBlance: Double = 0.0  // 잔액
     var accountNumber: Int = 0      // 은행계좌번호
+    var name: String = ""       // 고객이름
+
+    constructor(number: Int, balance: Double) {
+        this.accountNumber = number
+        accountBlance = balance
+    }
+
+    constructor(number: Int, balance: Double, name: String) {
+        this.accountNumber = number
+        this.accountBlance = balance
+        this.name = name
+    }
+
 
     // 계좌 잔액을 출력하는 함수
     fun displayBlance() {
         println("Number $accountNumber")
-        println("Currnet blance is $acountBlance")
+        println("Name is $name")
+        println("Currnet blance is $accountBlance")
     }
 }
 
@@ -30,6 +54,11 @@ class BankAccount {
 //   val account1 = BankAccount()  // 변수의 타입을 코틀린 컴파일러가 추론, 생략 가능
 //   클래스의 인스턴스가 생성되어 변수를 사용(참조)할 수 있다
 fun main(args: Array<String>) {
-    val account1: BankAccount = BankAccount()
-    val account2 = BankAccount()  // 변수의 타입을 코틀린 컴파일러가 추론, 생략 가
+
+    val account1: BankAccount = BankAccount(12345, 100.0)
+    val account2 = BankAccount(12346, 100.0)  // 변수의 타입을 코틀린 컴파일러가 추론, 생략 가
+    val account3 = BankAccount(12347, 100.0, "park")
+    account2.displayBlance()
+    account3.displayBlance()
+
 }
