@@ -24,8 +24,8 @@ class Person {
 //     ex) "Point2D x = 10, y = 10"
 //   인스턴스 생성,  x는 10 y는 10
 //   인스턴스 속성 커스텀 접근자 호출, x y값 출력
-class Point2D (var x: Int, var y: Int) {
-    val info: String
+open class Point2D (var x: Int, var y: Int) {
+    open val info: String
         get() { return "Point2D x = $x, y = $y"}
 }
 
