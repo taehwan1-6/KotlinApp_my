@@ -1,5 +1,7 @@
 package com.oz10.lib
 
+// 퀴즈상속인데 커밋이름을 잘못침
+
 // 클래스 상속
 // ColorPoint2D, Point3D
 
