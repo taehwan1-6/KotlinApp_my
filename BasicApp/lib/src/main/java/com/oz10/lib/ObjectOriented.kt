@@ -166,35 +166,71 @@ class ClassA {
 
 fun main(args: Array<String>) {
 
-    val account1: BankAccount = BankAccount(12345, 100.0)
-    val account2 = BankAccount(12346, 100.0)  // 변수의 타입을 코틀린 컴파일러가 추론, 생략 가
-    val account3 = BankAccount(12347, 100.0, "park")
-    account2.displayBlance()
-    account3.displayBlance()
+//    val account1: BankAccount = BankAccount(12345, 100.0)
+//    val account2 = BankAccount(12346, 100.0)  // 변수의 타입을 코틀린 컴파일러가 추론, 생략 가
+//    val account3 = BankAccount(12347, 100.0, "park")
+//    account2.displayBlance()
+//    account3.displayBlance()
+//
+//    println("=========================")
+//
+//    val account4 = BankAccount2(12348, 100.0,"kang")
+//    account4.displayBlance()
+//
+//    println("=========================")
+//
+//    val account5 = BankAccount3(12349, 1.0, "kang")
+//    account5.displayBlance()
+//
+//    println("=========================")
+//
+//    account1.accountBalance = 1000.0
+//    val balance1 = account1.accountBalance
+//    account1.displayBlance()
+//
+//    println("=========================")
+//
+//    val account6 = BankAccount4(12349, 300.0)
+//    account6.displayBlance()
+//
+//    account6.balanceLessFees = 200.0
+//    account6.displayBlance()
 
     println("=========================")
 
-    val account4 = BankAccount2(12348, 100.0,"kang")
-    account4.displayBlance()
+    // 동반객체
+    println("compaion object")
+    println( MyClass.counter )
+    MyClass.counterUp()
+    println( MyClass.counter )
 
-    println("=========================")
+    val instanceA = MyClass()
+    instanceA.showCount()
 
-    val account5 = BankAccount3(12349, 1.0, "kang")
-    account5.displayBlance()
+    val instanceB = MyClass()
+    MyClass.counterUp()
+    instanceB.showCount()
 
-    println("=========================")
+    instanceA.showCount()
 
-    account1.accountBalance = 1000.0
-    val balance1 = account1.accountBalance
-    account1.displayBlance()
+}
 
-    println("=========================")
 
-    val account6 = BankAccount4(12349, 300.0)
-    account6.displayBlance()
+// 동반 객체 compaion object
+//   자신을 포함하는 클래스의 모든 인스턴스가 공유하는 속성과 함수를 포함
+//   인스턴스를 생성하지 않고 클래스 이름으로도 사용이 가능
+//   동반 객체는 하나만 생성되기 때문에 동반 객체를 포함하는 클래스의 모든 인스턴스는 같은 동반 객체를 공유한다
+class MyClass {
+    fun showCount() {
+        println("counter = $counter")
+    }
 
-    account6.balanceLessFees = 200.0
-    account6.displayBlance()
+    companion object {
+        var counter = 0
 
+        fun counterUp() {
+            counter++;
+        }
+    }
 
 }
