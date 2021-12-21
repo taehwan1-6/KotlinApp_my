@@ -15,6 +15,7 @@ package com.oz10.lib
 
 // 클래스의 기본과 보조 생성자
 //   생성자 constructor : 클래스 인스턴스를 생성할 때 초기화 작업을 해야 하는 경우
+
 // 보조생성자 secondary constructor :
 //   class BankAccount { constrouctor(…) : this(…) { //초기화 코드 }
 //    서로 다른 구성 값으로 인스턴스를 초기화, 클래스 내부에 선언,
@@ -26,6 +27,12 @@ package com.oz10.lib
 //   class BankAccount (val accountNumber: Int, var accountBalance: Double){ }
 //   기본적인 초기화 작업을 수행, 클래스의 헤더에 선언, 클래스의 기본생성자는 하나만 가질 수 있다
 //   기본생성자에 선언된 변수는 자동으로 클래스 속성이 된다
+
+// 초기화 블록 initializer block
+//   기본생성자는 실행 코드를 포함할 수 없으므로
+//   기본생성자 다음에 자동 실행
+//   (단, 기본 생성자가 없고 보조 생성자만 있을 때는 실행되지 않는다)
+
 
 
 class BankAccount {
@@ -61,12 +68,34 @@ class BankAccount2 (val accountNumber: Int, var accountBalance: Double) {
         this.name = name
     }
 
-    fun displayBlance2() {
+    fun displayBlance() {
         println("Number $accountNumber")
         println("Name is $name")
         println("Currnet blance is $accountBalance")
     }
 }
+
+// 초기화 블록 클래
+class BankAccount3 (val accountNumber: Int, var accountBalance: Double) {
+    init {
+        // 초기화하는 코드
+        accountBalance = 0.0
+    }
+
+    var name: String = ""       // 고객이름
+
+    constructor(number: Int, balance: Double, name: String) : this(number, balance) {
+        this.name = name
+    }
+
+    // 계좌 잔액을 출력하는 함수
+    fun displayBlance() {
+        println("Number $accountNumber")
+        println("Name is $name")
+        println("Currnet blance is $accountBalance")
+    }
+}
+
 
 // 클래스 인스턴스 생성하고 초기화
 //   클래스로 뭔가를 하려면 인스턴스를 생성, 생성되는 인스턴스의 참조를 저장할 변수를 선언
@@ -83,7 +112,12 @@ fun main(args: Array<String>) {
 
     println("=========================")
 
-    val account4 = BankAccount2(12348, 100.0, "kang")
-    account4.displayBlance2()
+    val account4 = BankAccount2(12348, 100.0,"kang")
+    account4.displayBlance()
+
+    println("=========================")
+
+    val account5 = BankAccount3(12349, 1.0, "kang")
+    account5.displayBlance()
 
 }
