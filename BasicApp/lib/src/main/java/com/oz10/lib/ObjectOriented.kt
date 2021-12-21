@@ -22,29 +22,49 @@ package com.oz10.lib
 //            보조생성자에 선언된 변수는 클래스 내부 속성으로 추가해야 한다
 //            보조생성자에서 기본생성자 속성을 초기화하기 위해 this 키워드를 사용해 기본생성자를 호출한다
 
+// 기본생성자 primary constructor :
+//   class BankAccount (val accountNumber: Int, var accountBalance: Double){ }
+//   기본적인 초기화 작업을 수행, 클래스의 헤더에 선언, 클래스의 기본생성자는 하나만 가질 수 있다
+//   기본생성자에 선언된 변수는 자동으로 클래스 속성이 된다
+
+
 class BankAccount {
 
-    var accountBlance: Double = 0.0  // 잔액
+    var accountBalance: Double = 0.0  // 잔액
     var accountNumber: Int = 0      // 은행계좌번호
     var name: String = ""       // 고객이름
 
     constructor(number: Int, balance: Double) {
         this.accountNumber = number
-        accountBlance = balance
+        accountBalance = balance
     }
 
     constructor(number: Int, balance: Double, name: String) {
         this.accountNumber = number
-        this.accountBlance = balance
+        this.accountBalance = balance
         this.name = name
     }
-
 
     // 계좌 잔액을 출력하는 함수
     fun displayBlance() {
         println("Number $accountNumber")
         println("Name is $name")
-        println("Currnet blance is $accountBlance")
+        println("Currnet blance is $accountBalance")
+    }
+}
+
+// 클래스 기본 생성자
+class BankAccount2 (val accountNumber: Int, var accountBalance: Double) {
+    var name: String = ""       // 고객이름
+
+    constructor(number: Int, balance: Double, name: String) : this(number, balance) {
+        this.name = name
+    }
+
+    fun displayBlance2() {
+        println("Number $accountNumber")
+        println("Name is $name")
+        println("Currnet blance is $accountBalance")
     }
 }
 
@@ -60,5 +80,10 @@ fun main(args: Array<String>) {
     val account3 = BankAccount(12347, 100.0, "park")
     account2.displayBlance()
     account3.displayBlance()
+
+    println("=========================")
+
+    val account4 = BankAccount2(12348, 100.0, "kang")
+    account4.displayBlance2()
 
 }
