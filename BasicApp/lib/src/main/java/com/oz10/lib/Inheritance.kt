@@ -18,14 +18,29 @@ package com.oz10.lib
 // 기본 생성자를 갖는 클래스의 경우 서브 클래스에 부모 클래스의 기본 생성자를 참조하도록 서브 클래스를 선언
 //   open class ParentClass(var x: Int) { … }
 //   class SubClass(x: Int) : ParentClass(x) { … }
+
+// 하나 이상의 보조 생성자를 갖는 클래스의 경우
+//   서브 클래스 선언에서도 보조 생성자를 구현하고
+//   super 키워드를 사용해서 부모 클래스의 보조 생성자를 호출
+
+// == open class ParentClass(var num: Int) { ... }
 open class ParentClass {
     var x: Int = 0
+
+    constructor(num: Int) {
+        x = num
+    }
+
 }
-class SubClass : ParentClass() {
+class SubClass : ParentClass {
+    constructor(num: Int) : super(num) {
+        // 서브 클래스 생성자에서 실행할 코드
+    }
+
 }
 
 fun main(args: Array<String>) {
-    val sc = SubClass()
+    val sc = SubClass(0)
     println( sc.x )
     sc.x = 1
     println( sc.x )
