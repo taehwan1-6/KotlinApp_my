@@ -34,14 +34,62 @@ package com.oz10.lib
 //   interface  키워드를 사용
 //	 속성은 선언만 하고 초기화하는 코드가 없고,
 //   함수는 헤더만 선언하고 구현이 없는 추상 함수를 사용한다
+//   인스턴스를 생성할 수 없다
+//interface IAnt {
+//    var name: String
+//    fun place(): String
+//    fun show(): String
+//}
+//
+//open class Ant : IAnt {
+//    override var name = "Ant"
+//
+//    override fun place(): String {
+//        return name + "는 동굴에서 산다."
+//    }
+//
+//    override fun show(): String {
+//        return ""
+//    }
+//}
+//
+//class WaterAnt: Ant() {
+//    override fun place(): String {
+//        return name + "는 water 에서 산다."
+//    }
+//
+//    override fun show(): String {
+//        return "water 주변"
+//    }
+//}
+//
+//class FireAnt(override var name: String) : IAnt {
+//    override fun place(): String {
+//        return name + "는 산에서 산다."
+//    }
+//
+//    override fun show(): String {
+//        return "산 주변"
+//    }
+//}
+
+// 추상클래스 정의와 구현
+//   abstract 키워드를 class 키워드 앞에 사용
+//   인터페이스와 비슷하게 헤더만 정의된 추상 함수와 속성을 갖는다
+//   구현 코드가 있는 일반 함수를 가질 수 있다
+//   인스턴스를 생성할 수 없다
 interface IAnt {
     var name: String
     fun place(): String
     fun show(): String
 }
 
-open class Ant : IAnt {
+abstract class Ant : IAnt {
     override var name = "Ant"
+
+    override fun toString(): String {
+        return "이름: $name - " + place() + show()
+    }
 
     override fun place(): String {
         return name + "는 동굴에서 산다."
@@ -73,7 +121,7 @@ class FireAnt(override var name: String) : IAnt {
 }
 
 fun main(args: Array<String>) {
-    displayAnt( Ant() )
+//    displayAnt( Ant() )
     displayAnt( WaterAnt() )
     displayAnt( FireAnt("FireAnt") )
 }
