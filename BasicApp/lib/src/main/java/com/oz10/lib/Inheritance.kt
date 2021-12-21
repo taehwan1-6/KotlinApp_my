@@ -39,9 +39,42 @@ class SubClass : ParentClass {
 
 }
 
+// 부모(상위) 클래스
+open class BankAccountP {
+    var accountNumber: Int = 0
+    var accountBalance: Double = 0.0
+
+    constructor(number: Int, balance: Double) {
+        accountNumber = number
+        accountBalance = balance
+    }
+
+    // 계좌 잔액을 출력하는 함수
+    fun displayBalance() {
+        println("Number $accountNumber")
+        println("Current balance is $accountBalance")
+    }
+}
+
+// 서브 클래스 기능 확장
+class SavingsAccount : BankAccountP {
+    constructor(number: Int, balance: Double) : super(number, balance)
+
+    // 이자율과 이자금액 산출 함수
+    var rate: Double = 0.02
+    fun calculateInterest(): Double {
+        return rate * accountBalance
+    }
+}
+
+
 fun main(args: Array<String>) {
-    val sc = SubClass(0)
-    println( sc.x )
-    sc.x = 1
-    println( sc.x )
+//    val sc = SubClass(0)
+//    println( sc.x )
+//    sc.x = 1
+//    println( sc.x )
+
+    val sa = SavingsAccount(12345, 1000.0)
+    println( sa.calculateInterest() )
+
 }
