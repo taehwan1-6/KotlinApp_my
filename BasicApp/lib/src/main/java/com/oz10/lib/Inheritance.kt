@@ -50,13 +50,19 @@ open class BankAccountP {
     }
 
     // 계좌 잔액을 출력하는 함수
-    fun displayBalance() {
+    open fun displayBalance() {
         println("Number $accountNumber")
         println("Current balance is $accountBalance")
     }
 }
 
-// 서브 클래스 기능 확장
+/// 서브 클래스 기능 확장
+// 상속받은 함수 오버라이딩
+//   상속받은 함수의 새로운 버전을 작성:
+//     함수 시그니처(함수명, 매개변수의 개수 및 타입, 반환 타입)는 동일하게 하면서 함수 몸체의 실행 코드만 다르게 작성
+//   부모 클래스의 오버라이딩되는 함수에 open 키워드를 지정하고, 서브 클래스의 오버라이딩 함수에는 override 키워드를 지정
+//   서브 클래스의 오버라이딩한 함수에서 부모 클래스의 오버라이딩된 함수를 호출하고자 할 때는 super 키워드를 사용
+
 class SavingsAccount : BankAccountP {
     constructor(number: Int, balance: Double) : super(number, balance)
     constructor(number: Int, balance: Double, rate: Double) : super(number, balance) {
@@ -69,6 +75,12 @@ class SavingsAccount : BankAccountP {
     fun calculateInterest(): Double {
         return rate * accountBalance
     }
+
+    override fun displayBalance() {
+        super.displayBalance()
+        println("Interest rate is $rate")
+    }
+
 }
 
 
@@ -80,8 +92,10 @@ fun main(args: Array<String>) {
 
     val sa = SavingsAccount(12345, 1000.0)
     println( sa.calculateInterest() )
+    sa.displayBalance()
 
     val sa2 = SavingsAccount(12346, 1000.0, 0.07)
     println( sa.calculateInterest() )
+    sa2.displayBalance()
 
 }
