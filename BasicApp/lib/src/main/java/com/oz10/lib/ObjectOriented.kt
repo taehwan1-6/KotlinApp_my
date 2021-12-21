@@ -130,6 +130,28 @@ class BankAccount4 (val accountNumber: Int, var accountBalance: Double) {
     }
 }
 
+// 중첩 클래스와 내부 클래스
+//   중첩 클래스 nested class : 클래스 내부에 다른 클래스를 포함
+//     내부 클래스는 외곽 클래스의 속성을 사용할 수 없다
+//   내부 클래스 inner class : 클래스 내부에 다른 클래스를 포함
+//     inner 키워드를 지정하여 내부 클래스에서 외곽 클래스 속성에 접근 가능
+
+// 외곽 클래스
+class ClassA {
+    var cnt: Int = 10
+
+    // 중첩 클래스
+    class ClassB {
+//        val result = cnt + 20  // cnt 속성 접근 불가(오류)
+    }
+
+    // 내부 클래스
+    inner class ClassC {
+        val result = cnt + 20   // cnt 속성 접근 가능
+    }
+}
+
+
 
 // 클래스 인스턴스 생성하고 초기화
 //   클래스로 뭔가를 하려면 인스턴스를 생성, 생성되는 인스턴스의 참조를 저장할 변수를 선언
