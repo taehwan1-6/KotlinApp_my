@@ -35,6 +35,15 @@ import com.oz10.lionapp.databinding.ActivityEventBinding
 class EventActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEventBinding
 
+    val motionEvents = mapOf(
+        MotionEvent.ACTION_DOWN to "DOWN",
+        MotionEvent.ACTION_UP to "UP",
+        MotionEvent.ACTION_POINTER_DOWN to "POINTER_DOWN",
+        MotionEvent.ACTION_POINTER_UP to "POINTER_UP",
+        MotionEvent.ACTION_MOVE to "MOVE"
+    )
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEventBinding.inflate(layoutInflater)
@@ -88,15 +97,8 @@ class EventActivity : AppCompatActivity() {
             val id = m.getPointerId(i)
             val action = m.actionMasked
             val actionIndex = m.actionIndex
-            var actionString: String
-            when (action) {
-                MotionEvent.ACTION_DOWN -> actionString = "DOWN"
-                MotionEvent.ACTION_UP -> actionString = "UP"
-                MotionEvent.ACTION_POINTER_DOWN -> actionString = "POINTER_DOWN"
-                MotionEvent.ACTION_POINTER_UP -> actionString = "POINTER_UP"
-                MotionEvent.ACTION_MOVE -> actionString = "MOVE"
-                else -> actionString = ""
-            }
+
+            var actionString = motionEvents.getOrDefault(action, "")
 
             val touchStatus = "Action:$actionString, Index=$actionIndex, id=$id, x=$x, y=$y"
             Log.d("Event..", touchStatus)
