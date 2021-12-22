@@ -30,7 +30,9 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener {
+            val id = binding.etID.text.toString()
             val intent = Intent(this@LoginActivity, MemberActivity::class.java)
+            intent.putExtra("id", id)
             startActivity(intent)
         }
     }
