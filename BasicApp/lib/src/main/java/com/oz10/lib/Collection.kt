@@ -51,10 +51,41 @@ fun listCollection() {
     println("$a, $b, $c")
     val (d, _, e) = list    // 해체를 원하지 않는 요소에 밑줄 기호를 사용
     println("$d, $e")
-
-
 }
 
+// Set
+//   집합의 개념을 나타내므로 중복되지 않는 값을 갖는 요소들로 저장
+//   setOf 함수를 사용, 읽기 전용 Set 를 반환
+//   mutableSetOf 함수 사용, 변경 가능 Set 를 반환
+//     변경자 함수 mutator function : 변경 가능 Set 요소를 변경하는 함수들
+fun setCollection() {
+    val set = setOf("one", "two", "three", "one") // 읽기 전용 Set
+    println(set)
+    println(set.contains("one"))    // 요소가 있는지 확인
+    println(set.contains("four"))
+    println(set.elementAt(2))   // 인덱스 2의 요소
+
+    val mset = mutableSetOf("one", "two", "three")
+    mset.add("4"); println(mset)
+    mset.addAll(listOf("5", "6", "7")); println(mset)
+    mset -= listOf("5", "6", "7"); println(mset)
+    mset += listOf("5", "6", "7"); println(mset)
+    mset.removeAll(listOf("5", "6", "7")); println(mset)
+    mset.remove("4"); println(mset)
+
+    // 반복 처리
+    for (p in set) print("$p.. "); println()
+
+    mset.clear(); println(mset)
+
+    // List -> Set
+    println( listOf("one", "two", "three", "one").toSet() )
+    // List -> Set -> List
+    println( listOf("one", "two", "three", "one").toSet().toList() )
+}
+
+
 fun main(args: Array<String>) {
-    listCollection()
+//    listCollection()
+    setCollection()
 }
