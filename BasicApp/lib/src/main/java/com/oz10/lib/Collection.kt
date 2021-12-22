@@ -84,8 +84,54 @@ fun setCollection() {
     println( listOf("one", "two", "three", "one").toSet().toList() )
 }
 
+// Map
+//   키 key 와 이 키에 대응되는 값 value 의 쌍으로 저장
+//   항목 entry : 키와 값의 쌍으로 저장된 데이터
+//   mapOf 함수를 사용, 읽기 전용 Map 를 반환
+//   mutableMapOf 함수 사용, 변경 가능 Map 를 반환
+//     변경자 함수 mutator function : 변경 가능 Map 요소를 변경하는 함수들
+fun mapCollection() {
+    val map = mapOf("one" to 1.0, "two" to 2.0, "three" to 3.0) // 읽기 전용 Map 생성
+    val a = mapOf(
+        Pair("one", 1.0),
+        Pair("two", 2.0),
+        Pair("three", 3.0)
+    )
+    println(map)
+    println(a)
+
+    val mmap = mutableMapOf("one" to 1.0, "two" to 2.0, "three" to 3.0) // 변경 가능 Map
+    println(mmap["one"])
+    println(mmap.getValue("one"))
+    println(mmap.getOrElse("1") {"No search"} )
+    println(mmap.getOrDefault("1", 0) )
+
+    mmap += "four" to 4.0 ; println(mmap)
+    mmap += "four" to 5.0 ; println(mmap)   // 중복된 키는 값 업데이트
+    mmap -= "four" ; println(mmap)
+    mmap["1"] = 1.0 ; println(mmap)
+    mmap["1"] = 2.0 ; println(mmap)  // 중복된 키는 값 업데이트
+    mmap.put("2", 2.0); println(mmap)
+    mmap.putAll( listOf("3" to 3.0, "4" to 4.0) ) ; println(mmap)
+
+    // 반복 처리
+    mmap.forEach { (k, v) -> print("$k=$v.. ") } ; println()
+
+    // 키가 없으면 항목을 추가하고, 있으면 기존 값을 반환
+    println( mmap.getOrPut("5") {5.0} ) ; println(mmap)
+    println( mmap.getOrPut("5") {10.0} ) ; println(mmap)
+
+    // 지정한 키의 항목을 제외한 새로운 Map 을 반환
+    val b = mmap - "5"
+    println("b -> $b"); println("mmap -> $mmap")
+
+    mmap.clear(); println(mmap)
+}
+
+
 
 fun main(args: Array<String>) {
 //    listCollection()
-    setCollection()
+//    setCollection()
+    mapCollection()
 }
