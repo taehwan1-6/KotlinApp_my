@@ -24,6 +24,12 @@ import com.oz10.lionapp.databinding.ActivityLoginBinding
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
 
+    private val request_code = 5
+    companion object {
+        var members = mapOf("tester" to "1234", "admin" to "1234", "user" to "1234")
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -31,9 +37,31 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener {
             val id = binding.etID.text.toString()
-            val intent = Intent(this@LoginActivity, MemberActivity::class.java)
-            intent.putExtra("id", id)
-            startActivity(intent)
+            val pw = binding.etPW.text.toString()
+
+            if (members.containsKey(id)) {
+                val intent = Intent(this@LoginActivity, MemberActivity::class.java)
+                intent.putExtra("id", id)
+                startActivity(intent)
+            } else {
+                val intent = Intent(this@LoginActivity, JoinActivity::class.java)
+                intent.putExtra("id", id)
+                startActivityForResult(intent, request_code)
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if ((requestCode == request_code) && (resultCode == RESULT_OK)) {
+            data?.let {
+                if (it.hasExtra("returnData")) {
+                    val returnString = it.extras?.getString("returnData")
+                    binding.etID.setText(returnString)
+                }
+            }
+
         }
     }
 
