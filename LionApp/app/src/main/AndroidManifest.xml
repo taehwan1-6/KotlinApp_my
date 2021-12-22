@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LionApp">
         <activity
-            android:name=".MockchatActivity"
+            android:name=".Mission01Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,12 +19,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CountActivity"
+            android:name=".MockchatActivity"
             android:exported="false" />
 
         <activity
+            android:name=".CountActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
