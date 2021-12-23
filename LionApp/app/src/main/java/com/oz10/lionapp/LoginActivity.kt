@@ -40,15 +40,33 @@ class LoginActivity : AppCompatActivity() {
             val pw = binding.etPW.text.toString()
 
             if (members.containsKey(id)) {
-                val intent = Intent(this@LoginActivity, MemberActivity::class.java)
-                intent.putExtra("id", id)
-                startActivity(intent)
+
+                if (members[id] != pw) {
+                    binding.tvMsg.text = "비번이 다릅니다."
+                } else {
+                    initUI()
+
+                    val intent = Intent(this@LoginActivity, MemberActivity::class.java)
+                    intent.putExtra("id", id)
+                    startActivity(intent)
+                }
+
             } else {
                 val intent = Intent(this@LoginActivity, JoinActivity::class.java)
                 intent.putExtra("id", id)
                 startActivityForResult(intent, request_code)
             }
         }
+
+        binding.btnCancel.setOnClickListener {
+            super.finish()
+        }
+    }
+
+    private fun initUI() {
+        binding.tvMsg.text = ""
+        binding.etID.setText("")
+        binding.etPW.setText("")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
