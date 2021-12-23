@@ -52,6 +52,8 @@ class LoginActivity : AppCompatActivity() {
                 }
 
             } else {
+                initUI()
+
                 val intent = Intent(this@LoginActivity, JoinActivity::class.java)
                 intent.putExtra("id", id)
                 startActivityForResult(intent, request_code)
