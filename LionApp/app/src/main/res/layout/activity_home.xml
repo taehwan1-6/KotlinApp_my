@@ -30,21 +30,20 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTitle">
 
         <LinearLayout
+            android:id="@+id/layoutMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/button10"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lion" />
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/button11"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Count" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
 
