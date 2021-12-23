@@ -32,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
         buttons["Event"] = EventActivity::class.java
         buttons["Gesture"] = GestureActivity::class.java
         buttons["화면전환-로그인"] = LoginActivity::class.java
-
+        buttons["액티비티 생명주기"] = StatechangeActivity::class.java
 
         val params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
