@@ -33,7 +33,22 @@ class TwoFragmentActivity : FragmentActivity() {
             val text = binding.etMsg.text.toString()
             val oneFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as OneFragment
             oneFragment.changeText(text)
-
         }
+
+        binding.btnTwo.setOnClickListener {
+            val fragment = TwoFragment()
+            fragment.arguments = intent.extras
+            supportFragmentManager.beginTransaction().replace(
+                R.id.fragmentContainerView, fragment).commit()
+        }
+
+        binding.btnOne.setOnClickListener {
+            val fragment = OneFragment()
+            fragment.arguments = intent.extras
+            supportFragmentManager.beginTransaction().replace(
+                R.id.fragmentContainerView, fragment).commit()
+        }
+
+
     }
 }
