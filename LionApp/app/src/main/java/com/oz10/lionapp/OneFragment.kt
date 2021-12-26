@@ -17,7 +17,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [OneFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class OneFragment : Fragment() {
+class OneFragment : Fragment(), IChangeText {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -42,7 +42,7 @@ class OneFragment : Fragment() {
         return binding.root
     }
 
-    fun changeText(text: String) {
+    override fun changeText(text: String) {
         binding.textView.text = text
     }
 
