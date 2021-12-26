@@ -3,6 +3,7 @@ package com.oz10.lionapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
+import com.oz10.lionapp.databinding.ActivityTwoFragmentBinding
 
 // 안드로이드 프래그먼트 개요
 // 프래그먼트 Fragment : 액티비티 내부에서 독립적으로 앱의 UI를 처리
@@ -21,8 +22,18 @@ import androidx.fragment.app.FragmentActivity
 
 
 class TwoFragmentActivity : FragmentActivity() {
+    private lateinit var binding: ActivityTwoFragmentBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_two_fragment)
+        binding = ActivityTwoFragmentBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.btnOK.setOnClickListener {
+            val text = binding.etMsg.text.toString()
+            val oneFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as OneFragment
+            oneFragment.changeText(text)
+
+        }
     }
 }
