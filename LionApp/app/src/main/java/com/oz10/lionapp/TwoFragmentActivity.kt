@@ -22,7 +22,7 @@ import com.oz10.lionapp.databinding.ActivityTwoFragmentBinding
 //   프래그먼트로부터 액티비티로의 통신은 프래그먼트에 선언한 이벤트 리스너 인터페이스를 통해 수행
 
 
-class TwoFragmentActivity : FragmentActivity() {
+class TwoFragmentActivity : FragmentActivity(), EditbarFragment.EditbarListener {
     private lateinit var binding: ActivityTwoFragmentBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +46,12 @@ class TwoFragmentActivity : FragmentActivity() {
         supportFragmentManager.beginTransaction().replace(
             R.id.fragmentContainerView, fragment
         ).commit()
-
     }
+
+    override fun onButtonClick(text: String) {
+        val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as IChangeText
+        fragment.changeText(text)
+    }
+
 
 }
