@@ -2,6 +2,7 @@ package com.oz10.lionapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.oz10.lionapp.databinding.ActivityTwoFragmentBinding
 
@@ -39,20 +40,17 @@ class TwoFragmentActivity : FragmentActivity() {
 
         }
 
-        binding.btnTwo.setOnClickListener {
-            val fragment = TwoFragment()
-            fragment.arguments = intent.extras
-            supportFragmentManager.beginTransaction().replace(
-                R.id.fragmentContainerView, fragment).commit()
+        binding.btnTwo.setOnClickListener { changeFragment(TwoFragment()) }
+        binding.btnOne.setOnClickListener { changeFragment(OneFragment()) }
+
         }
 
-        binding.btnOne.setOnClickListener {
-            val fragment = OneFragment()
-            fragment.arguments = intent.extras
-            supportFragmentManager.beginTransaction().replace(
-                R.id.fragmentContainerView, fragment).commit()
-        }
-
+    private fun changeFragment(fragment: Fragment) {
+        fragment.arguments = intent.extras
+        supportFragmentManager.beginTransaction().replace(
+            R.id.fragmentContainerView, fragment
+        ).commit()
 
     }
+
 }
