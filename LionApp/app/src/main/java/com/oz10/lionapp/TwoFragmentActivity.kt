@@ -2,6 +2,7 @@ package com.oz10.lionapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.FragmentActivity
 
 // 안드로이드 프래그먼트 개요
 // 프래그먼트 Fragment : 액티비티 내부에서 독립적으로 앱의 UI를 처리
@@ -19,7 +20,7 @@ import android.os.Bundle
 //   프래그먼트로부터 액티비티로의 통신은 프래그먼트에 선언한 이벤트 리스너 인터페이스를 통해 수행
 
 
-class TwoFragmentActivity : AppCompatActivity() {
+class TwoFragmentActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_two_fragment)
