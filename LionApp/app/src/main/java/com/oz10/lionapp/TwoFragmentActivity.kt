@@ -30,12 +30,11 @@ class TwoFragmentActivity : FragmentActivity() {
         binding = ActivityTwoFragmentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnOK.setOnClickListener {
-            val text = binding.etMsg.text.toString()
-            val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as IChangeText
-            fragment.changeText(text)
-
-        }
+//        binding.btnOK.setOnClickListener {
+//            val text = binding.etMsg.text.toString()
+//            val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as IChangeText
+//            fragment.changeText(text)
+//        }
 
         binding.btnTwo.setOnClickListener { changeFragment(TwoFragment()) }
         binding.btnOne.setOnClickListener { changeFragment(OneFragment()) }
