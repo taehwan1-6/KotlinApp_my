@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 
 class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
@@ -34,8 +35,9 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
             itemTitle = itemView.findViewById(R.id.itemTitle)
             itemDetail = itemView.findViewById(R.id.itemDetail)
 
-            itemImage.setOnClickListener { v: View ->
+            itemView.setOnClickListener { v: View ->
                 // 클릭 이벤트 구현
+                Snackbar.make(v, details[adapterPosition], Snackbar.LENGTH_LONG).setAction("Action", null).show()
             }
         }
     }
