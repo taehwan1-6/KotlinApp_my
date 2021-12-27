@@ -36,6 +36,7 @@ class HomeActivity : AppCompatActivity() {
 
         buttons["두 개의 프래그먼트"] = TwoFragmentActivity::class.java
         buttons["머티리얼 디자인"] = MaterialActivity::class.java
+        buttons["탭 인터페이스"] = TabActivity::class.java
 
         val params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
