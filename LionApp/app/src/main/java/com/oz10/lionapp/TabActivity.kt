@@ -52,6 +52,12 @@ class TabActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
+        configureTabLayout()
+    }
+
+
+    private fun configureTabLayout() {
+
         // 4개의 탭 생성
         repeat(4) {
             binding.tabLayout.addTab( binding.tabLayout.newTab() )
