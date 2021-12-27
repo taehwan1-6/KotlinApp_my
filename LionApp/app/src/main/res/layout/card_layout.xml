@@ -24,7 +24,7 @@
             android:layout_height="100dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@sample/images" />
+            tools:srcCompat="@sample/chapterdata.json/mydata/image" />
 
         <TextView
             android:id="@+id/itemTitle"
@@ -34,7 +34,7 @@
             android:textSize="24sp"
             app:layout_constraintStart_toEndOf="@+id/itemImage"
             app:layout_constraintTop_toTopOf="@+id/itemImage"
-            tools:text="@sample/chapters" />
+            tools:text="@sample/chapterdata.json/mydata/chapter" />
 
         <TextView
             android:id="@+id/itemDetail"
@@ -44,7 +44,7 @@
             app:layout_constraintEnd_toEndOf="@+id/itemTitle"
             app:layout_constraintStart_toStartOf="@+id/itemTitle"
             app:layout_constraintTop_toBottomOf="@+id/itemTitle"
-            tools:text="@sample/items" />
+            tools:text="@sample/chapterdata.json/mydata/details" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

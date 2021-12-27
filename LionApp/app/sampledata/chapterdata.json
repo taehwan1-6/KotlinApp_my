@@ -1,0 +1,14 @@
+{
+  "mydata": [
+    {
+      "chapter" : "Chapter one",
+      "details" : "Item one details",
+      "image" : "@sample/images"
+    },
+    {
+      "chapter" : "Chapter two",
+      "details" : "Item two details",
+      "image" : "@sample/images"
+    }
+  ]
+}
