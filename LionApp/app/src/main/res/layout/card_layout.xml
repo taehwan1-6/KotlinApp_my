@@ -24,7 +24,7 @@
             android:layout_height="100dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            tools:srcCompat="@sample/images" />
 
         <TextView
             android:id="@+id/itemTitle"
@@ -34,7 +34,7 @@
             android:textSize="24sp"
             app:layout_constraintStart_toEndOf="@+id/itemImage"
             app:layout_constraintTop_toTopOf="@+id/itemImage"
-            tools:text="@tools:sample/cities" />
+            tools:text="@sample/chapters" />
 
         <TextView
             android:id="@+id/itemDetail"
@@ -44,7 +44,7 @@
             app:layout_constraintEnd_toEndOf="@+id/itemTitle"
             app:layout_constraintStart_toStartOf="@+id/itemTitle"
             app:layout_constraintTop_toBottomOf="@+id/itemTitle"
-            tools:text="@tools:sample/full_names" />
+            tools:text="@sample/items" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
