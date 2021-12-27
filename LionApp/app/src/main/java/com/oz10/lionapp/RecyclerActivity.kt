@@ -7,6 +7,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.oz10.lionapp.databinding.ActivityRecyclerBinding
 
 // RecyclerView와 CardView
@@ -26,6 +28,9 @@ class RecyclerActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityRecyclerBinding
 
+    private var layoutManager : RecyclerView.LayoutManager? = null
+    private var adapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -33,6 +38,11 @@ class RecyclerActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
+
+        layoutManager = LinearLayoutManager(this)
+        adapter = RecyclerAdapter()
+        binding.contentRecycler.recyclerView.layoutManager = layoutManager
+        binding.contentRecycler.recyclerView.adapter = adapter
 
     }
 }
