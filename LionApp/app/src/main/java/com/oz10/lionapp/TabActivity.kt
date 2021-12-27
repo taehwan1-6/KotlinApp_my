@@ -22,6 +22,17 @@ import com.oz10.lionapp.databinding.ActivityTabBinding
 //		createFragment() : 페이지 번호를 인자로 받아서 연관된 프래그먼트 객체를 반환
 
 
+// 	실습 프로젝트
+//		Basic Activity 템플릿을 선택
+//		불필요한 코드 삭제: 자동 생성된 화면 이동 코드
+//		네 개의 프래그먼트 생성
+//		TabLayout과 ViewPager2 추가
+//		FragmentStateAdapter  생성
+//		TabLayout, ViewPager2, TabPagerAdapter 인스턴스를 초기화
+//		앱 테스트
+//		TabLayout 커스터마이징
+
+
 class TabActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
@@ -35,19 +46,10 @@ class TabActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        val navController = findNavController(R.id.nav_host_fragment_content_tab)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_tab)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
-    }
 }
