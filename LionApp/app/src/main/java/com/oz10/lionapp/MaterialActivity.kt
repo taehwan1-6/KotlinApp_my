@@ -23,6 +23,18 @@ import com.oz10.lionapp.databinding.ActivityMaterialBinding
 //      간단한 텍스트 메시지를 포함하여 화면 아래에 나타난다
 
 
+// 	실습 프로젝트
+//		Basic Activity 템플릿을 선택
+//		프로젝트 확인
+//		불필요한 코드 삭제
+//			프래그먼트 간의 이동 코드 삭제
+//			nav_graph.xml 에서 SecondFragment 삭제
+//			SecondFragment.kt, fragment_second.xml 삭제
+//		플로팅 액션 버튼 변경
+//      스낵바에 액션 추가
+
+
+
 class MaterialActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
