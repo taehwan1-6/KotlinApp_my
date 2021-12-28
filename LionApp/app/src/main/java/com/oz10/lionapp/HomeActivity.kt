@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.oz10.lionapp.databinding.ActivityHomeBinding
 import kotlin.math.roundToInt
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private val buttons = mutableMapOf<String, Class<*>>()
+
+    private var layoutManager : RecyclerView.LayoutManager? = null
+    private var adapter : RecyclerView.Adapter<MenuRecyclerAdapter.ViewHolder>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +61,12 @@ class HomeActivity : AppCompatActivity() {
             btn.setOnClickListener { startActivity(Intent(this, buttons[key])) }
             binding.layoutMenu.addView(btn)
         }
+
+        layoutManager = LinearLayoutManager(this)
+        adapter = MenuRecyclerAdapter()
+        binding.recyclerView.layoutManager = layoutManager
+        binding.recyclerView.adapter = adapter
+
 
     }
 }
