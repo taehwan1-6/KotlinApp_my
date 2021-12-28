@@ -45,7 +45,6 @@ class MainFragment : Fragment() {
         binding.btnConvert.setOnClickListener {
             if (binding.etDollar.text.isNotEmpty()) {
                 viewModel.setAmount( binding.etDollar.text.toString() )
-                binding.tvResult.text = viewModel.getResult().toString()
             } else {
                 binding.tvResult.text = "No Value"
             }
