@@ -62,8 +62,12 @@ class HomeActivity : AppCompatActivity() {
             binding.layoutMenu.addView(btn)
         }
 
+        val items = mutableListOf<HomeMenuItem>()
+        items.add(HomeMenuItem("Lion", MainActivity::class.java))
+        items.add(HomeMenuItem("Count", CountActivity::class.java))
+
         layoutManager = LinearLayoutManager(this)
-        adapter = MenuRecyclerAdapter()
+        adapter = MenuRecyclerAdapter(this, items)
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = adapter
 

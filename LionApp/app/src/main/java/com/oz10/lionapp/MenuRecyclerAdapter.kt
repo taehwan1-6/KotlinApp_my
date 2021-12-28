@@ -1,5 +1,6 @@
 package com.oz10.lionapp
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,31 +9,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 
-class MenuRecyclerAdapter : RecyclerView.Adapter<MenuRecyclerAdapter.ViewHolder>() {
+class HomeMenuItem(val title: String, val activity: Class<*>, val details: String = "") {}
 
-    private val images = intArrayOf(R.drawable.android_image_1,
-        R.drawable.android_image_2, R.drawable.android_image_3,
-        R.drawable.android_image_4, R.drawable.android_image_5,
-        R.drawable.android_image_6, R.drawable.android_image_7,
-        R.drawable.android_image_8)
-
-    private val titles = arrayOf("Chapter One",
-        "Chapter Two", "Chapter Three", "Chapter Four",
-        "Chapter Five", "Chapter Six", "Chapter Seven",
-        "Chapter Eight")
-
-    private val details = arrayOf("Item one details", "Item two details",
-        "Item three details", "Item four details",
-        "Item five details", "Item six details",
-        "Item seven details", "Item eight details")
+class MenuRecyclerAdapter(val context: Context, val items: List<HomeMenuItem>)
+    : RecyclerView.Adapter<MenuRecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
-        var itemImage: ImageView
         var itemTitle: TextView
         var itemDetail: TextView
         init {
-            itemImage = itemView.findViewById(R.id.itemImage)
             itemTitle = itemView.findViewById(R.id.itemTitle)
             itemDetail = itemView.findViewById(R.id.itemDetail)
 
@@ -50,12 +36,11 @@ class MenuRecyclerAdapter : RecyclerView.Adapter<MenuRecyclerAdapter.ViewHolder>
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemImage.setImageResource(images[position])
-        holder.itemTitle.text = titles[position]
-        holder.itemDetail.text = details[position]
+        holder.itemTitle.text = items[position].title
+        holder.itemDetail.text = items[position].details
     }
 
     override fun getItemCount(): Int {
-        return titles.size
+        return items.size
     }
 }
