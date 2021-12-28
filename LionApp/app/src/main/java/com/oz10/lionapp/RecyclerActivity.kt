@@ -1,5 +1,6 @@
 package com.oz10.lionapp
 
+import android.graphics.Color
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -38,6 +39,9 @@ class RecyclerActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
+
+        binding.collapsingToolBar.title = "Hello Lion.."
+        binding.collapsingToolBar.setContentScrimColor(Color.GREEN)
 
         layoutManager = LinearLayoutManager(this)
         adapter = RecyclerAdapter()
