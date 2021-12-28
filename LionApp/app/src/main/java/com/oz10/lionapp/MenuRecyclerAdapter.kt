@@ -1,6 +1,7 @@
 package com.oz10.lionapp
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ class MenuRecyclerAdapter(val context: Context, val items: List<HomeMenuItem>)
 
             itemView.setOnClickListener { v: View ->
                 // 클릭 이벤트를 구현
+                context.startActivity(Intent(context, items[adapterPosition].activity))
             }
         }
     }
