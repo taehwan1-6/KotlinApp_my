@@ -33,7 +33,7 @@ class MenuRecyclerAdapter(val context: Context, val items: List<HomeMenuItem>)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
             MenuRecyclerAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.card_layout, parent, false)
+            .inflate(R.layout.card_layout_menu, parent, false)
         return ViewHolder(v)
     }
 
