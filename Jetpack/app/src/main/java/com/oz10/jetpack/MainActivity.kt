@@ -55,6 +55,17 @@ import com.oz10.jetpack.ui.main.MainFragment
 //  앱 테스트
 
 
+// LiveData 에제
+//	ViewModel 에 LiveData 추가
+//		MutableLiveData 클래스를 사용해서 데이터 변경이 가능하게 변수 선언
+//		반환값도 MutableLiveData 객체를 반환하도록 수정
+//	옵저버 구현 : UI 컨트롤러 내부에 옵저버를 구성
+//		Observer 인스턴스 : Observer 인터페이스를 구현하는 객체를 생성
+//		onChanged() 함수 : LiveData 의 데이터 값이 변경될 때 호출되는 함수
+//		LiveData의 observe() 함수 호출을 통해 LiveData 인스턴스에 연결
+
+
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
